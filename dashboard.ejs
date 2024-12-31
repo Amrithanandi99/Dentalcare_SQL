@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Appointments Dashboard</h1>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+              <% appointments.forEach(appointment => { %>
+                  <tr>
+                      <td><%= appointment.id %></td>
+                      <td><%= appointment.name %></td>
+                      <td><%= appointment.email %></td>
+                      <td><%= appointment.number %></td>
+                      <td><%= appointment.date %></td>
+
+                      <td>
+                        <form action="/delete-appointment/<%= appointment.id %>" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td> 
+                  </tr>
+              <% }); %>
+          </tbody>
+        </table>
+    </div>
+</body>
+</html>
